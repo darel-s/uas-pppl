@@ -3,13 +3,19 @@ package lustrum.kmtsl.stepDef;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+
+import java.time.Duration;
 
 public class RegisterStepDefinition {
     WebDriver driver;
@@ -52,14 +58,21 @@ public class RegisterStepDefinition {
         registerButton.click();
     }
 
-    @Then("^I should see a success message \"([^\"]*)\"$")
-    public void i_should_see_a_success_message(String successMessage) {
-        WebElement successElement = driver.findElement(By.xpath("//*[contains(text(), '" + successMessage + "')]"));
-        Assert.assertTrue(successElement.isDisplayed());
+    @Then("^I should be redirected to the login page$")
+    public void i_should_be_redirected_to_the_login_page() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement loginElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Belum memiliki akun?')]")));
+        Assert.assertTrue(loginElement.isDisplayed());
     }
 
     @Then("^I should see an error message \"([^\"]*)\"$")
     public void i_should_see_an_error_message(String errorMessage) {
+        WebElement errorElement = driver.findElement(By.xpath("//*[contains(text(), '" + errorMessage + "')]"));
+        Assert.assertTrue(errorElement.isDisplayed());
+    }
+
+    @Then("^I should see a registration error message \"([^\"]*)\"$")
+    public void i_should_see_a_registration_error_message(String errorMessage) {
         WebElement errorElement = driver.findElement(By.xpath("//*[contains(text(), '" + errorMessage + "')]"));
         Assert.assertTrue(errorElement.isDisplayed());
     }
