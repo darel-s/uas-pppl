@@ -49,7 +49,6 @@ public class CraftStepDefinition {
         WebElement dashboardElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(text(), 'Terimakasih telah melakukan pendaftaran')]")));
         Assert.assertTrue(dashboardElement.isDisplayed());
 
-        // Redirect to Craft Data Form page
         driver.get(craftFormUrl);
     }
 
@@ -108,7 +107,6 @@ public class CraftStepDefinition {
     public void userClicksButton(String buttonText) {
         WebElement button = driver.findElement(By.xpath("//button[text()='" + buttonText + "']"));
 
-        // Scroll the button into view
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
 
         button.click();
@@ -116,7 +114,6 @@ public class CraftStepDefinition {
 
     @Then("^the form should be submitted successfully$")
     public void formSubmittedSuccessfully() {
-        // Verify the success toast message
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Pendaftaran berhasil')]")));
         Assert.assertTrue(toastMessage.isDisplayed());

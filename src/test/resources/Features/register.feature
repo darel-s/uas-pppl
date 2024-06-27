@@ -1,8 +1,8 @@
 #Feature: User Registration
 #    Scenario: Successful registration with valid credentials
 #        Given I am on the registration page
-#        When I enter my email "darel@mail.com"
-#        And I enter my username "darrielrel"
+#        When I enter my email "nawal@mail.com"
+#        And I enter my username "nawalrizky"
 #        And I enter my password "123"
 #        And I confirm my password "123"
 #        And I submit the registration form
@@ -10,8 +10,8 @@
 #
 #    Scenario: Password mismatch during registration
 #        Given I am on the registration page
-#        When I enter my email "darel@mail.com"
-#        And I enter my username "darrielrel"
+#        When I enter my email "nawal@mail.com"
+#        And I enter my username "nawalrizky"
 #        And I enter my password "123"
 #        And I confirm my password "456"
 #        And I submit the registration form
@@ -19,8 +19,8 @@
 #
 #    Scenario: Registration fails with already registered email
 #        Given I am on the registration page
-#        When I enter my email "darel@mail.com"
-#        And I enter my username "darrielrel"
+#        When I enter my email "nawal@mail.com"
+#        And I enter my username "nawalrizky"
 #        And I enter my password "123"
 #        And I confirm my password "123"
 #        And I submit the registration form
